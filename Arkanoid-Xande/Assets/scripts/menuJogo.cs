@@ -1,9 +1,11 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class menuJogo : MonoBehaviour
 {
@@ -12,11 +14,6 @@ public class menuJogo : MonoBehaviour
     public GameObject menu;
     public AudioMixer AudioMixer;
    
-    void Start()
-    {
-        
-    }
-
     
    
     void Update()

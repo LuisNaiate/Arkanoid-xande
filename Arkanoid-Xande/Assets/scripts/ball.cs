@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ball : MonoBehaviour
 {
     private float speed = 25;
     Rigidbody2D rb;
+    public GameObject fim;
+    public string cena;
 
     void Start()
     {
@@ -30,6 +33,14 @@ public class ball : MonoBehaviour
         return (ball.x - player.x) / playerWidth;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject == fim)
+        {
+            SceneManager.LoadSceneAsync(cena);
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.name == "player")
@@ -41,6 +52,11 @@ public class ball : MonoBehaviour
 
 
             rb.velocity = dir * speed;
+        }
+
+        if(collision.gameObject.CompareTag("plat"))
+        {
+            Destroy(collision.gameObject);
         }
 
     }
