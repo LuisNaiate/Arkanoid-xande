@@ -15,7 +15,7 @@ public class spawn : MonoBehaviour
     }
     void spawnss(int qtd)
     {
-
+        int random = 0;
         float px= -12f;
         float py = 6.4f;
 
@@ -24,8 +24,10 @@ public class spawn : MonoBehaviour
             px = -12f;
             for (int j = 0; j < 13; j++)
             {
+                random = Random.Range(0, 4);
+                
                 Vector2 pos = new Vector2(px, py);
-                Instantiate(blocos[i], pos, Quaternion.identity);
+                Instantiate(blocos[random], pos, Quaternion.identity);
                 px += 2;
             }
             py -= 0.5f ;

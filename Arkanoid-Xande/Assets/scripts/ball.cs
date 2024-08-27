@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ball : MonoBehaviour
 {
-    private float speed = 25;
+    private float speed = 30;
     Rigidbody2D rb;
     public GameObject fim;
     public string cena;
@@ -43,7 +43,7 @@ public class ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "player")
+        if (collision.gameObject.name == "racket")
         {
             float x = HitFactor(transform.position,
                 collision.transform.position,
