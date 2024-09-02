@@ -19,7 +19,7 @@ public class spawn : MonoBehaviour
         float px= -12f;
         float py = 6.4f;
 
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 5; i++)
         {
             px = -12f;
             for (int j = 0; j < 13; j++)

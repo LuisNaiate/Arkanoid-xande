@@ -5,10 +5,17 @@ using UnityEngine;
 
 public class movimentação : MonoBehaviour
 {
+    [Header("corpo")]
+
     float horizontal;
      private Rigidbody2D body;
     private int speed = 22;
+    Collider2D bolaColission;
+
+    [Header("outros gameObjects")]
+
     public GameObject bola;
+    public Transform bolacoiso;
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
@@ -27,6 +34,19 @@ public class movimentação : MonoBehaviour
         {
             Instantiate(bola, transform.position, Quaternion.identity);
             Destroy(collision.gameObject);
+        }
+
+        if(collision.gameObject.CompareTag("explo"))
+        {
+           bolaColission = Physics2D.OverlapCircle(bolacoiso.position, 1);
+
+            if(bolaColission != null)
+            {
+                if(bolaColission.CompareTag("plat"))
+                {
+                    Destroy(bolaColission.gameObject);
+                }
+            }
         }
     }
 }

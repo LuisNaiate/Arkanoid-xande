@@ -5,10 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class ball : MonoBehaviour
 {
-    private float speed = 30;
-    Rigidbody2D rb;
+    [Header("coiso")]
+
+    [SerializeField] private float speed = 30;
+    [SerializeField] Rigidbody2D rb;
+
+    [Header("power ups")]
+
+    public GameObject doublee, explod, aumentar;
+
+    [Header("não coiso")]
+
     public GameObject fim;
     public string cena;
+
+    
 
     void Start()
     {
@@ -56,7 +67,23 @@ public class ball : MonoBehaviour
 
         if(collision.gameObject.CompareTag("plat"))
         {
+
+            int random = 0;
+            random = Random.Range(0, 15);
+            if (random == 4)
+            {
+                Instantiate(doublee);
+            }
+            if(random == 8)
+            {
+                Instantiate(explod);
+            }
+            if(random == 13)
+            {
+                Instantiate(aumentar);
+            }
             Destroy(collision.gameObject);
+            
         }
 
     }

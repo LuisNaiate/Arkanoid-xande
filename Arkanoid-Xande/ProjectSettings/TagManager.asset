@@ -6,6 +6,7 @@ TagManager:
   tags:
   - plat
   - double
+  - explo
   layers:
   - Default
   - TransparentFX
