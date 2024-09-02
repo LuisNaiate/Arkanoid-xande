@@ -11,7 +11,7 @@ public class spawn : MonoBehaviour
 
     private void Start()
     {
-        spawnss(4);
+        spawnss(5);
     }
     void spawnss(int qtd)
     {

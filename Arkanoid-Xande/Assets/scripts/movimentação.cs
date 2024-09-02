@@ -32,7 +32,7 @@ public class movimentação : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("double"))
         {
-            Instantiate(bola, transform.position, Quaternion.identity);
+            Instantiate(bola, bola.transform.position, Quaternion.identity);
             Destroy(collision.gameObject);
         }
 
