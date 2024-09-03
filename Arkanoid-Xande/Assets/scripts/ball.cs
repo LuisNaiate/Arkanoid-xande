@@ -23,11 +23,13 @@ public class ball : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        rb.velocity = Vector2.up * speed;
-
-
-
+        if(podeComeca.comeca == true)
+        {
+            
+            rb = GetComponent<Rigidbody2D>();
+            rb.velocity = Vector2.up * speed;
+        }
+      
 
     }
 
@@ -36,7 +38,6 @@ public class ball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
     }
 
     float HitFactor(Vector2 ball, Vector2 player, float playerWidth)
@@ -48,13 +49,13 @@ public class ball : MonoBehaviour
     {
         if(collision.gameObject == fim)
         {
-            SceneManager.LoadSceneAsync(cena);
+            Destroy(gameObject, 0.2f);
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "racket")
+        if (collision.gameObject.name == "racket" && podeComeca.comeca == true)
         {
             float x = HitFactor(transform.position,
                 collision.transform.position,

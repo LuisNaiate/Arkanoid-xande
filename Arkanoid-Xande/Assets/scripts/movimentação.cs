@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class movimentação : MonoBehaviour
 {
@@ -15,10 +16,19 @@ public class movimentação : MonoBehaviour
     [Header("outros gameObjects")]
 
     public GameObject bola;
-    public Transform bolacoiso;
+    
+    public int qtdBolas;
+   
+    
+
+
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+        qtdBolas = 1;
+       
+       
+      
     }
 
 
@@ -26,6 +36,11 @@ public class movimentação : MonoBehaviour
     {
         horizontal = Input.GetAxisRaw("Horizontal");
         body.velocity = new Vector2(horizontal * speed, body.velocity.y);
+
+        if (qtdBolas <= 0)
+        {
+            SceneManager.LoadScene("fase");
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -33,20 +48,26 @@ public class movimentação : MonoBehaviour
         if(collision.gameObject.CompareTag("double"))
         {
             Instantiate(bola, bola.transform.position, Quaternion.identity);
+            qtdBolas++;
             Destroy(collision.gameObject);
         }
 
+        if(bola.gameObject.CompareTag("fim"))
+        {
+            qtdBolas--;
+        }
         if(collision.gameObject.CompareTag("explo"))
         {
-           bolaColission = Physics2D.OverlapCircle(bolacoiso.position, 1);
 
-            if(bolaColission != null)
-            {
-                if(bolaColission.CompareTag("plat"))
-                {
-                    Destroy(bolaColission.gameObject);
-                }
-            }
+            explodir.taAtivo = true;
+            
+        }
+
+        if(collision.gameObject.CompareTag("aumentar"))
+        {
+           
         }
     }
+
+   
 }

@@ -7,6 +7,9 @@ TagManager:
   - plat
   - double
   - explo
+  - bola
+  - fim
+  - aumentar
   layers:
   - Default
   - TransparentFX
